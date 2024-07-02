@@ -1,5 +1,5 @@
 import './drink.css';
-
+import { Layer } from '../layer/layer';
 
 
 export const Drink = ({id, image, name, ordered, layers}) => (
@@ -8,19 +8,14 @@ export const Drink = ({id, image, name, ordered, layers}) => (
     <div className="drink" key={id}>
               <div className="drink__product">
                 <div className="drink__cup">
-                  <img src={image} /> 
+                  <img src={image} alt={name} /> 
                 </div>
                 <div className="drink__info">
                   <h3>{name}</h3>
                   
-                  {layers.map((layer) => {
-                        return (
-                            <div className="layer">
-                                    <div className="layer__color" style={{ backgroundColor: `${layer.color}` }}></div>
-                                    <div className="layer__label">{layer.label}</div>
-                                </div>
-                        )
-                    })}
+                  {layers.map((layer) => (
+                    <Layer color={layer.color} label={layer.label} />
+                    ))}
 
                 </div>
               </div>
