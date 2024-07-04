@@ -1,10 +1,9 @@
 import './menu.css';
-import { Drink } from '../drink/drink'
+import { Drink } from '../Drink/Drink'
 
 const response = await fetch("http://localhost:4000/api/drinks")
 const json = await response.json();
 const drinksjson = json.data;
-console.log(drinksjson);
 
 export const Menu = (drinks) => (
 

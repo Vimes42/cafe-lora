@@ -1,5 +1,5 @@
 import './drink.css';
-import { Layer } from '../layer/layer';
+import { Layer } from '../Layer/Layer';
 
 
 export const Drink = ({id, image, name, ordered, layers}) => (
@@ -14,7 +14,7 @@ export const Drink = ({id, image, name, ordered, layers}) => (
                   <h3>{name}</h3>
                   
                   {layers.map((layer) => (
-                    <Layer color={layer.color} label={layer.label} />
+                    <Layer key={layer.label} color={layer.color} label={layer.label} />
                     ))}
 
                 </div>
