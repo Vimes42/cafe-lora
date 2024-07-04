@@ -8,7 +8,7 @@ export const Drink = ({id, image, name, ordered, layers}) => (
     <div className="drink" key={id}>
               <div className="drink__product">
                 <div className="drink__cup">
-                  <img src={image} alt={name} /> 
+                  <img src={`http://localhost:4000${image}`} alt={name} /> 
                 </div>
                 <div className="drink__info">
                   <h3>{name}</h3>

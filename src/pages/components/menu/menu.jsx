@@ -1,7 +1,13 @@
 import './menu.css';
 import { Drink } from '../drink/drink'
 
-export const Menu = () => (
+const response = await fetch("http://localhost:4000/api/drinks")
+const json = await response.json();
+const drinksjson = json.data;
+console.log(drinksjson);
+
+export const Menu = (drinks) => (
+
     <section className="menu" id="menu">
         <div className="container">
           <h2>Naše nabídka</h2>
@@ -9,49 +15,9 @@ export const Menu = () => (
             Vyberte si z našeho interaktivního menu a nemusíte čekat na obsluhu
           </p>
           <div className="drinks-list">
-            <Drink 
-              id = {0}
-              name = "espresso"
-              ordered = {false}
-              image = "/cups/espresso.png"
-              layers = {[
-                  {
-                      color: '#613916',
-                      label: 'espresso',
-                  }   
-              ]}
-            />
-
-            <Drink 
-              id = {1}
-              name = "Doppio"
-              ordered = {true}
-              image = "/cups/doppio.png"
-              layers = {[
-                  {
-                      color: '#613916',
-                      label: 'espresso',
-                  }   
-              ]}
-            />
-
-            <Drink 
-              id = {2}
-              name = "Lungo"
-              ordered = {true}
-              image = "/cups/lungo.png"
-              layers = {[
-                {
-                  color: '#b0dee1',
-                  label: 'voda'
-                },  
-                {
-                  color: '#613916',
-                  label: 'espresso',
-                }   
-              ]}
-            />
-
+            {drinksjson.map((drink) => (
+              <Drink key={drink.id} image={drink.image} name={drink.name} ordered={drink.ordered} layers={drink.layers} />
+            ))}
           </div>
 
           <div className="order-detail">
