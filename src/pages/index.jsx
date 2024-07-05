@@ -33,11 +33,20 @@ rolloutNav.addEventListener("click", () => {
   rolloutNav.classList.toggle('nav-closed');
 })
 
-const orderForms = document.querySelectorAll(".drink__controls");
-orderForms.forEach((form) => {
-  form.addEventListener("click", (e) => {
-    e.preventDefault();
+const orderBtns = document.querySelectorAll(".order-btn");
+orderBtns.forEach((btn) => {
+  btn.addEventListener("click", async (e) => {
+    
     const drinkId = e.target.dataset.id;
-    console.log(drinkId)
+    
+    await fetch(`http://localhost:4000/api/drinks/${drinkId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': "application/json"
+      },
+      body: JSON.stringify([{ op: 'replace', path: '/ordered', value: true }])
+    })
+    window.location.reload()
+    
   })
 })
