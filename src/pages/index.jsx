@@ -32,3 +32,12 @@ navBtn.addEventListener("click", () => {
 rolloutNav.addEventListener("click", () => {
   rolloutNav.classList.toggle('nav-closed');
 })
+
+const orderForms = document.querySelectorAll(".drink__controls");
+orderForms.forEach((form) => {
+  form.addEventListener("click", (e) => {
+    e.preventDefault();
+    const drinkId = e.target.dataset.id;
+    console.log(drinkId)
+  })
+})
