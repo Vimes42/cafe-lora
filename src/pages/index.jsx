@@ -32,11 +32,11 @@ navBtn.addEventListener("click", () => {
 rolloutNav.addEventListener("click", () => {
   rolloutNav.classList.toggle('nav-closed');
 })
+    
 
 const orderBtns = document.querySelectorAll(".order-btn");
 orderBtns.forEach((btn) => {
   btn.addEventListener("click", async (e) => {
-    
     const drinkId = e.target.dataset.id;
     
     await fetch(`http://localhost:4000/api/drinks/${drinkId}`, {
@@ -44,9 +44,9 @@ orderBtns.forEach((btn) => {
       headers: {
         'Content-Type': "application/json"
       },
-      body: JSON.stringify([{ op: 'replace', path: '/ordered', value: true }])
+      body: JSON.stringify([{ op: 'replace', path: '/ordered', value: true ? false : true }])
     })
-    window.location.reload()
+   window.location.reload()
     
   })
 })
